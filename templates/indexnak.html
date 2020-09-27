@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+           <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kryterium ilościowe</h1>
+    <p class="lead" style="text-align: center" >Pokaż minimalne nakłady w wybranych lokalizacjach</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
+  </div>
+</div>
+
+<form method="POST" action="/naklady" >
+<div class="container">
+  <div class="row">
+
+      <!--KOLUMNA1-->
+    <div class="col-sm">
+    <h4 style="text-align: center" >Lubuskie</h4>
+<div class="box">
+            <div class="form-group" style="width: 14rem; text-align: center">
+
+             <label for="exampleFormControlSelect1">Wybierz powiat</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="powiatl">
+        <option></option>
+        {% for powiat in lubuskie_powiaty %}
+      <option>{{ powiat.powiat }}</option>
+        {% endfor %}
+    </select>
+            </div>
+    </div>
+
+    </div>
+
+            <!--KOLUMNA2-->
+    <div class="col-sm">
+    <h4 style="text-align: center">Wielkopolskie</h4>
+<div class="box">
+                    <div class="form-group" style="width: 14rem; text-align: center">
+
+             <label for="exampleFormControlSelect1">Wybierz powiat</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="powiatw">
+        <option></option>
+        {% for powiat in wielkopolskie_powiaty %}
+      <option>{{ powiat.powiat }}</option>
+        {% endfor %}
+    </select>
+    </div>
+</div>
+    </div>
+
+            <!--KOLUMNA3-->
+    <div class="col-sm">
+    <h4 style="text-align: center">Zachodniopomorskie</h4>
+<div class="box">
+        <div class="form-group" style="width: 14rem; text-align: center">
+
+             <label for="exampleFormControlSelect1">Wybierz powiat</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="powiatz">
+        <option></option>
+        {% for powiat in zachodniopomorskie_powiaty %}
+      <option>{{ powiat.powiat }}</option>
+        {% endfor %}
+    </select>
+    </div>
+</div>
+    </div>
+  </div>
+         <p style="text-align: center"> <button type="submit" style="text-align: center"
+                                                class="btn btn-ownb">
+             Pokaż warunki</button>
+   </p>
+</div>
+
+
+</form>
+
+<div class="container">
+
+{% if request.method == 'POST' %}
+{% if gminyl or gminyw or gminyz %}
+{% include 'resultsnak.html' %}
+{% else %}
+<h3 style="color: brown; text-align: center">Nie wybrano powiatu</h3>
+{% endif %}
+{% endif %}
+
+</div>
+
+<hr />
+
+
+{% endblock %}

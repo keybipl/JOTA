@@ -410,7 +410,7 @@ date = data()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     specialist = randint(1, 4)
-    return render_template('index.html', specialist=specialist)
+    return render_template('index.html')
 
 
 @app.route('/pomoc', methods=['GET', 'POST'])

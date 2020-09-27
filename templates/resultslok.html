@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+       <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kryterium ilościowe</h1>
+    <p class="lead" style="text-align: center" >Zobacz gdzie możesz uzyskać wsparcie w Kostrzyńsko-Słubickiej Specjalnej Strefie Ekonomicznej</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
+  </div>
+</div>
+    <h4 style="text-align: center">Podane parametry</h4><br/>
+
+
+    <!--PODANE PARAMETRY-->
+    <div class="container">
+  <div class="row">
+
+      <!--KOLUMNA1-->
+    <div class="col-sm">
+
+      <p style="text-align: center">Koszty kwalifikowane:<br/>
+
+      <b>{{  value }} {{ currency }}</b>
+      </p>
+    </div>
+
+      <!--KOLUMNA2-->
+    <div class="col-sm">
+      <p style="text-align: center">Wielkość przedsiębiorcy:<br/>
+
+      <b>{{  size }}</b>
+      </p>
+    </div>
+
+      <!--KOLUMNA3-->
+    <div class="col-sm">
+      <p style="text-align: center">TYLKO działalność B+R i/lub BPO:<br/>
+
+      <b>{% if rd == 'option1' %}
+                    TAK
+                    {% else %}
+                    NIE
+                    {% endif %}
+      </b>
+      </p>
+    </div>
+  </div>
+</div>
+
+    <p style="text-align: center"> <a href="lokalizacje"><button type="button" style="text-align: center" class="btn btn-ownb">
+        Zmień parametry</button></a>
+   </p>
+
+<!--KONIEC KOLUMN-->
+
+<hr />
+
+    {% if result %}
+        <h5 style="text-align: center; color: #062c33">Lokalizacje spełniające kryteria ilościowe
+            oraz minimalne nakłady w poszczególnych gminach przy podanych parametrach:<br/>
+        </h5><hr />
+
+
+<div class="container">
+  <div class="row">
+      <!-- KOLUMNA 1 -->
+    <div class="col-sm">
+       <h3 style="text-align: center">Lubuskie</h3>
+        {% for k,v in result.items() %}<br/>
+        <p style="text-align: center">Powiat <b>{{ k }}</b> w gminach:</p>  <br/>
+<br/>
+<table class="table" >
+                        <tr>
+                            <th style="width: 40%" scope="col">Gmina</th>
+                            <th style="width: 30%; text-align: center"scope="col">PLN</th>
+                        </tr>
+</table>
+
+  {% for i in v %}
+  <table class="table">
+      <tr>
+
+          <td style="width:40%; text-align: left">{{ i }}</td>
+        <td style="width:30%; text-align: center" >{{ '{:,}'.format(lub[i]).replace(',', ' ') }} zł</td>
+
+    </tr>
+</table>
+ {% endfor %}
+            <br/><br/>
+          {% endfor %}
+
+
+
+    </div>
+      <!-- KOLUMNA 2 -->
+      <div class="col-sm">
+       <h3 style="text-align: center">Wielkopolskie</h3>
+        {% for k,v in resultw.items() %}<br/>
+        <p style="text-align: center">Powiat <b>{{ k }}</b> w gminach:</p>  <br/>
+<br/>
+<table class="table" >
+                        <tr>
+                            <th style="width: 40%" scope="col">Gmina</th>
+                            <th style="width: 30%; text-align: center"scope="col">PLN</th>
+                        </tr>
+</table>
+
+  {% for i in v %}
+  <table class="table">
+      <tr>
+{#      <td style="width:40%; text-align: left">{{ i }}</td>#}
+{#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
+          <td style="width:40%; text-align: left">{{ i }}</td>
+        <td style="width:30%; text-align: center" >{{ '{:,}'.format(wlkp[i]).replace(',', ' ') }} zł</td>
+{#        <td style="width: 30%; text-align: center" >#}
+{#            {% set test = dicn[i]/cena | float %}#}
+{#          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;#}
+{##}
+{#    </td>#}
+    </tr>
+</table>
+ {% endfor %}
+            <br/><br/>
+          {% endfor %}
+
+
+
+    </div>
+      <!-- KOLUMNA 3 -->
+     <div class="col-sm">
+       <h3 style="text-align: center">Zachodniopomorskie</h3>
+        {% for k,v in resultz.items() %}<br/>
+        <p style="text-align: center">Powiat <b>{{ k }}</b> w gminach:</p>  <br/>
+<br/>
+<table class="table" >
+                        <tr>
+                            <th style="width: 40%" scope="col">Gmina</th>
+                            <th style="width: 30%; text-align: center"scope="col">PLN</th>
+                        </tr>
+</table>
+
+  {% for i in v %}
+  <table class="table">
+      <tr>
+{#      <td style="width:40%; text-align: left">{{ i }}</td>#}
+{#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
+          <td style="width:40%; text-align: left">{{ i }}</td>
+        <td style="width:30%; text-align: center" >{{ '{:,}'.format(zach[i]).replace(',', ' ') }} zł</td>
+{#        <td style="width: 30%; text-align: center" >#}
+{#            {% set test = dicn[i]/cena | float %}#}
+{#          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;#}
+{##}
+{#    </td>#}
+    </tr>
+</table>
+ {% endfor %}
+            <br/><br/>
+          {% endfor %}
+    {% else %}
+
+ <div class="container">
+
+ <p style="text-align: center; color: #a71d2a">Niestety przy podanych parametrach inwestycja nie może uzyskać wsparcia
+ na terenie Kostrzyńsko-Slubkiej Specjalnej Strefy Ekonomicznej</p>
+
+ </div>
+
+    {% endif %}
+
+
+    </div>
+</div>
+
+
+</div>
+    <hr />
+
+{% endblock %}

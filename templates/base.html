@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
+<style>
+        .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 100px;
+  height: 100px;
+}
+
+</style>
+
+<style>
+    .btn-own{background-color:#343a40;color: #9a9d9a;}
+    .btn-own:hover{background-color:#000000;color: #FFF;}
+</style>
+
+<style>
+    .btn-ownb{background-color:#a6a6a6;color: #FFF;}
+    .btn-ownb:hover{background-color:#d9d9d9;color: #FFF;}
+</style>
+
+</head>
+
+<body>
+<!--TOP-->
+<br/>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-4">
+          <div class="box">
+      <img alt="Jota Investment" height="75px" src="{{ url_for('static', filename="images/jota.png") }}">
+          </div><!--end BOX-->
+      </div><!--koniec KOLUMNA1-->
+      <div class="col-sm-8">
+                <div class="box">
+      <img alt="Jota Investment" height="50px" src="{{ url_for('static', filename="images/om.PNG") }}">
+                </div><!--end BOX-->
+          <p style="text-align: center; font-size: 24px">w w w . j o t a i n v e s t . c o m</p>
+      </div><!--koniec KOLUMNA2-->
+      </div><!--end row-->
+  </div><!--end container-->
+
+{% block content %}{% endblock %}
+
+<div class="container">
+<p style="text-align: justify">
+      Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią mozliwości
+      uzyskania wsparcia na nową inwestycję.<br/><br/>
+
+ <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample8">
+    Kontakt ze specjalistą
+  </button>
+
+    <div class="collapse" id="collapseExample8">
+  <div class="card card-body">
+<br/>
+       <div class="row">
+    <div class="col-sm-4">
+       <p style="text-align: center"><img alt="Krzysztof Babij" style="height:200px; text-align: center"
+                                          src="/static/images/konrad.png" class="img-thumbnail"></p>
+    </div>
+    <div class="col-sm-8">
+     <p><b>Konrad Tyszkiewicz</b>
+        <br />Właściciel</p>
+        <p><i class="fas fa-at"></i><a href="mailto:konrad@investpoland.pl"> konrad@investpoland.pl</a> <br/>
+            <i class="fas fa-mobile-alt"> </i> +48 516 312 918<br/><br/>
+    <i class="fab fa-linkedin"></i><a href="https://pl.linkedin.com/in/konrad-tyszkiewicz-b5bba1172"
+                                      target="_blank"> Konrad Tyszkiewicz </a><br/>
+        <i class="fab fa-twitter-square"></i><a href="https://twitter.com/tyszkiewicz_k" target="_blank"> tyszkiewicz_k</a> <br/>
+            <i class="fab fa-facebook"></i><a href="https://www.facebook.com/konrad.tyszkiewicz" target="_blank">@konrad.tyszkiewicz</a>
+  </div>
+</div>
+      </p>
+    </div>
+      </div><br/>
+
+
+</div>
+<hr />
+
+<!--STOPKA-->
+<div class="container">
+    <div class="row">
+  <div class="col-sm-6" style="text-align: left" >
+<img alt="Jota nvest s.c." height="170px" src="{{ url_for('static', filename='images/jota.png') }}">
+
+</div>
+  <div class="col-sm-6" style="text-align: justify; background-color: #d9d9d9;" >
+      <p style="text-align: left"><i class="fas fa-map-marker-alt"></i>  <b>Jota Invest s.c.</b><br/>
+        ul. Chynowska 9<br/>
+        65-138 Zielona Góra<br/>
+      NIP: 9291011288
+      <p><i class="fas fa-at"></i> <a href="mailto:info@jotainvest.com">info@jotainvest.com</a><br/>
+            <i class='fas fa-phone'></i>  +48 516 312 918<br/>
+      <a href="https://jotainvest.com/" target="_blank">www.jotainvest.com</a>
+
+  </p></div></div></div>
+    <div class="container">
+
+    <p style="text-align: right">created by: <a href="http://babij.eu" target="_blank">babij.eu</a></p>
+    </div>
+
+
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+{% block script %}{% endblock %}
+
+</body>
+</html>
